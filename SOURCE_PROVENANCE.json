@@ -1,0 +1,326 @@
+{
+  "description": "Public sources of the input data, the scripts that read or process them, and SHA-256 of the processed files distributed in this package. redistributed=false means the raw source files are not included; the processed series derived from them are, and the scripts listed rebuild them (see README, 'Rebuild the inputs from the public sources').",
+  "sources": [
+    {
+      "source": "U.S. EPA Clean Air Markets Program Data (CAMPD), daily emissions, facility aggregation, 2019-01-01 to 2025-12-31",
+      "url": "https://campd.epa.gov/data",
+      "redistributed": false,
+      "scripts": [
+        "build_state_series.py",
+        "facility_validation.py",
+        "external_validation.py",
+        "physical_decomposition.py",
+        "ba_crosswalk.py",
+        "attribution.py"
+      ],
+      "derived_files": {
+        "data/derived/ba_daily_co2.csv": "c07bb05f9d42a1630489287c3cfc7f75643c490d672e350ad0e72c68a72dafb0",
+        "data/derived/coverage_by_state.csv": "784d183e57d0ca2a03218cd44b88c15cca1ade1233b92b017cdd0af5e4f10740",
+        "data/derived/facility_ef.csv": "87ebeed8026a0874c99800a75fb39ac7c31efff24e35901a80a3ef1ea5d25994",
+        "data/derived/missingness_audit.csv": "38f0b76de366feed0e842b20869354249efdae4404aefea171c448f749642f72",
+        "data/derived/reconstruction_check.csv": "561bfda2a564a4e1cb98afa9aca30007cb3c9dc12c5f50275579b2d51401be70",
+        "data/derived/seasonal_decomposition.csv": "eea6b400efa98bc12945b1240081d9b8ae94393d7be6f909599c3c1fea7d0b75",
+        "data/derived/seasonal_profiles_phys.csv": "31a9e85842d258ebaa1172f2a8ed742e21b1dc1b845a70041ec657aae3ef4a84",
+        "data/derived/state_daily_components.csv": "41b4d98a121539af5b5d47eaff9bcc0e8b613e511e4f02d2e7746c681829beb3",
+        "data/derived/state_eligibility.csv": "6da5ed2c9ed2297f3bde94e9c612a1c22620a3593ddb5fc06e1a14bbd795deae",
+        "data/derived/summary.json": "23b5bafb34f141cf65d2b18549283816748b9a63d6c983fd13e5aaa36be28b37",
+        "data/panels/balanced/AL.csv": "b7c163c445569992b9bc9a63c504e5eed6a8a79a14ef3850dca3628637206e40",
+        "data/panels/balanced/AR.csv": "7c90a2a6fe7c14516386dc529c5c4cdf85f8721482594be828be812c7a04c381",
+        "data/panels/balanced/AZ.csv": "36c2b6a1cf7387ff57e9ec01d810619c900e15af315d9487fb6f7fdf30f0e7aa",
+        "data/panels/balanced/CA.csv": "591268248aff8efbe4e1c53bc8b75443783c950fdb24a09892bc7db1880b2864",
+        "data/panels/balanced/CO.csv": "aad081d007fbdbe62d621140316e77071640bc6cdcf93cb512b1d3cb4be1c359",
+        "data/panels/balanced/CT.csv": "669aef9f6f109f57f771c09b94070ddcb3279c86044892b790d057dcce41d4d3",
+        "data/panels/balanced/DE.csv": "a8a9a3ff5e5a2479d42eb75ab08a6ac3bc5c4278e60f94ac7cecc7a9ad356524",
+        "data/panels/balanced/FL.csv": "373e7d14a90badd0650018e33c6017d0c7f979a44467b88a33b476d79819bde6",
+        "data/panels/balanced/GA.csv": "f8a4dfa7281e8f07907d655aa992dc1bc514e75b94b35ed805e22358fa10f43b",
+        "data/panels/balanced/IA.csv": "8a79a2fc92824c07a608016a0457dade1d4b8544cd30602258684c8b5efa717c",
+        "data/panels/balanced/IL.csv": "4571e76f0c04f3bda94a9ae4326fd13d5e7590dfc4a77648083df6b40ac744b0",
+        "data/panels/balanced/IN.csv": "1a374ab364fdd248c520453b6b3b6ebfb61c5e79778c0c3062d8eb21809dbcad",
+        "data/panels/balanced/KS.csv": "9eef4644e46f78bd010a6faa6ed873a41d5368a14e0ce1863cb3d3edc4a94877",
+        "data/panels/balanced/KY.csv": "02d86babe92cce8546db4e1cb8a944c739f466822d9b926cb76171475330ff97",
+        "data/panels/balanced/LA.csv": "145bb354590a03d032426509f271a7bf41c0f85801b54fcceb2ca5a0b0ee62ec",
+        "data/panels/balanced/MA.csv": "6de555aacbac468b1139ef5115cfc2ede4f749a35c6ad5faae0af42bd36e554d",
+        "data/panels/balanced/MD.csv": "82602be4db741c203489636c17875b190794bd4d80e2fe920dee02ce5e7eaa94",
+        "data/panels/balanced/MI.csv": "c1da26ef4e5af5963aa42bf7dc30535b57627fcd390d4a6b9a862d11019ec1f6",
+        "data/panels/balanced/MN.csv": "bca08e8711c3b9b676c14ff85fc67527d44ace6ca40b2bdd8ba272117ad0af2f",
+        "data/panels/balanced/MO.csv": "2e5992514eeb86404c0189114a4b9210c3673dc98098b335550555ceff337bf7",
+        "data/panels/balanced/MS.csv": "fd4489919769431d1865de3df4a53b70c03537af3a66fd14ea513f65e6aac749",
+        "data/panels/balanced/MT.csv": "dc6c484be86f053d3c20d7f09b28b23a0e6480813cb601bdd4058848776fc706",
+        "data/panels/balanced/NC.csv": "88c6626d4143d0248ca4cdb6f798bfcdc23d59356832d8c4f0889e4da6246e41",
+        "data/panels/balanced/ND.csv": "1a8ece1e5ce061fba04085865c251acb67013a010112b5f5113a24d4afa6b875",
+        "data/panels/balanced/NE.csv": "94bf3d34452b2e026c086699e8bd1831b32e3a26cc7372a251622900b0988307",
+        "data/panels/balanced/NH.csv": "2ff8cb6e419328fd9638d2c0ced624ed24443ec829ee36d7a60b8d23dc3324cb",
+        "data/panels/balanced/NJ.csv": "3d8252c5fda17701822b11948bbb4c3a363b5d80e9cfbc06c23bd01b9dcd1afe",
+        "data/panels/balanced/NM.csv": "d642ed6542d3a72795bc33192ba6030a37edb26251ea058c86ef2a4937db1b31",
+        "data/panels/balanced/NV.csv": "d60a3e05c988f62f08f8cd09264fc5538883702dc64ef008073b6558dea78018",
+        "data/panels/balanced/NY.csv": "1320397144be0cd8697fe4a93abf30a507d7a97b5b2cf23bc07f765cddc21192",
+        "data/panels/balanced/OH.csv": "a2e22ec151fc090a4e2dc51ecb7bba4827391460fd58f7e18cae9077ba9b2355",
+        "data/panels/balanced/OK.csv": "f801d19cfcb92b03f5a1419ef8b71f0fdc2dbf875b07e38e2dfa1326b278dbaa",
+        "data/panels/balanced/OR.csv": "2e5fa4fb558c0b2363f0d47ba4c75cb38a517bbbd3ea8240c64e6e86cc04c5ac",
+        "data/panels/balanced/PA.csv": "e7ba64930b5bc22a00a99ba3f61691374f1874422a94d56cdf77e6107091cd10",
+        "data/panels/balanced/RI.csv": "7bfc823aa6559222ff28420f9aae1bfbe6553de10f9c325942b82286f74b3d36",
+        "data/panels/balanced/SC.csv": "470dd2691b10d0a6efe88b77727ab43ec839ec49e3366c6355d262cb0da018b4",
+        "data/panels/balanced/SD.csv": "ed3389c2e2728f7d472595ddf3573153f928125947e078f0fa3932faceababb2",
+        "data/panels/balanced/TN.csv": "61ee414adb60507ec6e3f4e8b71ec5db2c9ebe3a571a36a5fb47a001805ec916",
+        "data/panels/balanced/TX.csv": "ff16cb4cb9610b2f05d5d3ae014c83d7594f6563b83c729e33988832fc360a4a",
+        "data/panels/balanced/UT.csv": "8bffa821e07c33c0eb454a20106b2ded33762958efdb062fd773eb02a7d2b702",
+        "data/panels/balanced/VA.csv": "f82fc9224ebb8bf1f169621e96354203c363ef319b32b1e861b9bd59e7a51ebb",
+        "data/panels/balanced/WA.csv": "3ae89eca4dfa1180c06673393c6730aa56188246da8c77da9752df1689d69157",
+        "data/panels/balanced/WI.csv": "6b3dfa39ee751dcdde66882203f09c60c3a1ae4731212e179c75ed55b7fd422e",
+        "data/panels/balanced/WV.csv": "47f9ebc9310a39591738dc0be5cc48a548f9aa7a507cfe9bd0633291dc2e7028",
+        "data/panels/balanced/WY.csv": "cd9f160bbf62d0e48a406b9bbbe5d6d7b02814aee398facd8b19df5c07fe5aed",
+        "data/panels/filled/AL.csv": "c3564f022850b76ccbd1dc33d8ad5cd50fc291d55103ba3f6b45775017cbd0e1",
+        "data/panels/filled/AR.csv": "8ff22bbdaa54510274dfc1de73f28c0c50c7cec260ce769d4fb91011428675ed",
+        "data/panels/filled/AZ.csv": "745af67541ed13479748d8147f14f70326b13ff2edef793d9e285542547f84e9",
+        "data/panels/filled/CA.csv": "983bf20623e2f6472f685b1a5271d9576cf84b017e94d87d5e1dca09fca2ea2c",
+        "data/panels/filled/CO.csv": "c5251fa41f934cec2c31f562ba80486abf67f429caebaa4559ee40c66924e589",
+        "data/panels/filled/CT.csv": "0f27486d9dbbb7acb949fb0ab040baa97abecdbde4dad46308da345b324cbe97",
+        "data/panels/filled/DE.csv": "062dee42a1105860b3df28709e51475f0d2d03123ace557f6b20359bb1e33dfa",
+        "data/panels/filled/FL.csv": "177866eafd2947628b87b31f55b5d674726598680c554092d7561ee9d33fbc3d",
+        "data/panels/filled/GA.csv": "fca94a055d4f6c6a1542f9ec65024721e4761249636b05a88bd22c11c152417f",
+        "data/panels/filled/IA.csv": "22d1babd973e68c67db883f8889ef5a96a006f1dd9eb4b14b6ed059c3aefffc9",
+        "data/panels/filled/IL.csv": "d893e2380952ed53875d6ef756444d8877e8a928e9681513e32707ea4a25d72e",
+        "data/panels/filled/IN.csv": "85394d3825b507eccaa97bed32abd9569692b2e9f1fd615ca36cd1cc2f97e1b9",
+        "data/panels/filled/KS.csv": "cc6d524d5efc32fb8df6eedbadfc9bb170a179b026630d385254d2b2671346f5",
+        "data/panels/filled/KY.csv": "874619965942c11cd3e89327514a78a778d7a7c0f446c0fa69990f6067bb8156",
+        "data/panels/filled/LA.csv": "94387d9eab6302871c0f92dec0587ec5da6314090a78d1f8a7a9371ff44774ed",
+        "data/panels/filled/MA.csv": "ce54024886853e70e72a7c71750012a1033cf17c28a02ae25865ac06650acd75",
+        "data/panels/filled/MD.csv": "e6d04efa7f8142e451d6e598923030652114662a80899c902078f3b235985003",
+        "data/panels/filled/MI.csv": "a94036ca1b1a791396132ea82c9b5005a585c42881b49f9041e5540951c85d45",
+        "data/panels/filled/MN.csv": "f79caaef954740737c7473a8bcca4f2509c32df23bac270e806e0bca7efaea14",
+        "data/panels/filled/MO.csv": "5eaee38f3a54122532e8f9023a9345f4986e7769d39f83d54a1ef064b837ba49",
+        "data/panels/filled/MS.csv": "4387f79d317b89cb8e7db61bb9106f8ba3cadb5dd708e7f2ab08b4ea9b4596ec",
+        "data/panels/filled/MT.csv": "22aebe8f4eb027654005c23e2802ae65fa6d6b0ae98bd3b4134fdacc04b1af74",
+        "data/panels/filled/NC.csv": "7c2a403f552d3b82c631c24bf1166dc1538cc00e0084ee4e4b0cf643eb126332",
+        "data/panels/filled/ND.csv": "010855a45a16457a8d1a34ac7d4aea8239af95464e46a172fd38e207dfcacd00",
+        "data/panels/filled/NE.csv": "28a0d3470ec678d8be37eadcf32612ae1d742a83da0290c0984e7496a728bc0e",
+        "data/panels/filled/NH.csv": "d1f1cb5bf790b853af35743b9899d1d642a14b48dbec3be2f9247bfb8fb9c02a",
+        "data/panels/filled/NJ.csv": "fe316299591b42b2b421179e373d188a6c3a8af1b3932e7c764c27861ea396fe",
+        "data/panels/filled/NM.csv": "e01767d060434a7ea6053b6467e745c1a6e523cd8f1f8774a1fb89261754e3ce",
+        "data/panels/filled/NV.csv": "ad0f6ee5b6833ec5d7a66a710a73a89292b2203a9de126886680ef667b226e3c",
+        "data/panels/filled/NY.csv": "cf464046c77199f1933b6aaf1d3291e09619d8a3e1e7248d40212d0badcf96d1",
+        "data/panels/filled/OH.csv": "a7edeb8a9bd942f79d118da77658a3760aa7a290823212b233c28323edf28517",
+        "data/panels/filled/OK.csv": "d7d58d2e10318f5225be4f51bde465def4bc5948b958409d499ce85181f04d03",
+        "data/panels/filled/OR.csv": "6c63122fbdc2a9fc9f23ac8d7af392c4849a5bcebcf3fc1056722e3204a68989",
+        "data/panels/filled/PA.csv": "5c39493112433dec385ecb429510974d5785aa53cee35506f028dd443e26c673",
+        "data/panels/filled/RI.csv": "e10d6620ea3224e0deb156b8754900bbd91be49bdaa18acbd72e49c7e50fe886",
+        "data/panels/filled/SC.csv": "a4fe77c4fff619c88c7fd83c658731d3384021fab18d5be55c00a84364253c19",
+        "data/panels/filled/SD.csv": "792e68c56a3132f0ab76cf8416993730c0fd02422113ce1b2fe9b244d02abc83",
+        "data/panels/filled/TN.csv": "a27b09df3744a0451f895f36c2b683f675e956c78ffe21350af1971e4f107c90",
+        "data/panels/filled/TX.csv": "1eaf7d98fcde5636e86eca0655e6b4a8e1c72557138fad488e12799b18c5394b",
+        "data/panels/filled/UT.csv": "036c39731ac439ed7c63c924e1a952a05967096eb9f17083af672498f7e15122",
+        "data/panels/filled/VA.csv": "f04f08126bdaa7bce7f3e9e49cee0c314ebc32f1a6bf6048548f272600866c71",
+        "data/panels/filled/WA.csv": "5fdff5ee67bf4911642d2b1f10610525b83805ce6e7eb7091f15f2fa53be1ba6",
+        "data/panels/filled/WI.csv": "64d0aba77568c310e4c020056413ff11e8adebe328796952e10ebe4e48e7d95f",
+        "data/panels/filled/WV.csv": "3472ab0339a55b027d73f6f8c5ce8689b9a8362c32360336677a705c091e00ab",
+        "data/panels/filled/WY.csv": "f4931de0277cbef79a8dc21722e67f83de24b11bb036f3b606dfd4229b266bea",
+        "data/panels/highcov/AL.csv": "f22f7c6ff43c4afb98b19f252179fac85babbcbac10ddfac6be17b9849d2a91e",
+        "data/panels/highcov/AZ.csv": "11eaf6c207f25f4e76c2f620db8a5a97a361cec80737b7c90a4dcda3e034803e",
+        "data/panels/highcov/CA.csv": "d3aa54314a058c68cb5396506daaa41beea1e33f6935a6e50eff731771c2f14a",
+        "data/panels/highcov/CO.csv": "f99d172cd861a20ce3b79935ee78c631949e5a9a072473402cd2da960003f6b2",
+        "data/panels/highcov/CT.csv": "a9a2c75cdee56112a884d8d4c338c3f5fc70fe62dadc82e0c1a61adf9898ab8f",
+        "data/panels/highcov/DE.csv": "f5c8cf2c2c05705fa494e839b108567c5ad712b900b5d261738de27b054a617a",
+        "data/panels/highcov/FL.csv": "d32a6368c3754f834425435bf1d502f821d805379a85e4655c6d9e52deadaaa7",
+        "data/panels/highcov/GA.csv": "09ce86d6a1b69c872fd872ecd3d4aa3b33c2b3f6f5d72faf5ee1034d11338ad6",
+        "data/panels/highcov/IL.csv": "07d3e4e06d4307a0f0fdaba23cf945dd869059433938d17084c20088ad3f7fd5",
+        "data/panels/highcov/IN.csv": "14a0d44ac0c4d21d7f150d4f41b6dce393e2f11ef9ff644828a7b1e485569433",
+        "data/panels/highcov/KY.csv": "76ddeb4b8de40fd1e25f51a0280dfe075e444ac80e0198f6c89b63115aab4732",
+        "data/panels/highcov/LA.csv": "a3193730215708352d239049d718c1c0ef1783f25ea01c5b83c852a0ee34ab2a",
+        "data/panels/highcov/MA.csv": "e0a75c339c3cf294ce6e755e30e70dc83d45574713eeed0bdbc52e804f373eff",
+        "data/panels/highcov/MD.csv": "6ffb5d22a61d5233a30bb38c469058ec42a1f2e204c766c82041d6356ad80489",
+        "data/panels/highcov/MI.csv": "d007f3924a4b233fd12d080e7310556ca7c3c164feb99fa3b7e6d554c393384b",
+        "data/panels/highcov/MN.csv": "0a2ab58b57c604c02803beaa5dc3948c8d7f68f6cbbf617c123a8b603f473d63",
+        "data/panels/highcov/MO.csv": "7d7b77fcb4be5327863ac9d45da34535b80ea5371d794175da5581e1872bdd9e",
+        "data/panels/highcov/MS.csv": "02fb73f628cc580c6916ded6fea2900f380f6add5a941d0105099f5655c3ed1e",
+        "data/panels/highcov/MT.csv": "2a863f79ba81b29f3e68a1282b6b309708ef2bcfd35c649b7eaa06cb1f22bfbc",
+        "data/panels/highcov/NC.csv": "919f4b08a3396f8d363ea903ac1ef8fd7bd97a16582b6b85cbab8932e575ba07",
+        "data/panels/highcov/ND.csv": "0d994dad1690501afc82ea3a4386edbd594695db843bdc5e1fcd02d5200f7d98",
+        "data/panels/highcov/NE.csv": "241059a5c81c15109cf8aa7683159d9536a9775598fe3ac78e6828d7c77e9b9b",
+        "data/panels/highcov/NJ.csv": "db51947274a7c332f27b95b7baa0ffda7dd112d95addb887552e25bb2660274d",
+        "data/panels/highcov/NM.csv": "ee7df56fc9c820767a34ab156c481a8006797255a78e871ef29ce64d29995fdd",
+        "data/panels/highcov/NV.csv": "60a176a2ade7a06c7281dba05f1da0c6dbcad99412e0c8feb3ed15a470b94edf",
+        "data/panels/highcov/NY.csv": "f106dfb79d20a16f9adc59a246c7a9dcdc1dbf42370f7ad43cb343a2c27344eb",
+        "data/panels/highcov/OH.csv": "77059dd5b0f17757f409faafdf589eeed92692d47cf5319cec2a65da3a809e90",
+        "data/panels/highcov/OK.csv": "bc9c96d5ae5b175a91fc7e2a309faa29a0632ad2b3614aaacbce64eaa2de5f30",
+        "data/panels/highcov/OR.csv": "6319fa27bb9eec4868826ac7f79170371d33999cfa62c14823fa8c8b689c0ad6",
+        "data/panels/highcov/PA.csv": "230028b8bcfd506fae4a42ba49be4e8b9bd7069351dae52bd2f92379adb1a499",
+        "data/panels/highcov/SC.csv": "a545159e33ccca355e2f30c37d8822e6a5db8c58f86b208527cf18f218c9f33c",
+        "data/panels/highcov/TN.csv": "e41e0477381a89cf3b71bd5b60fadb896fba1d9ffb49d7b4ec77059d9affe708",
+        "data/panels/highcov/TX.csv": "c4c15fb984881b3db7d663db0641e72916118e58d5fbc86442208308b6d90a78",
+        "data/panels/highcov/UT.csv": "827f0942051291c365e4db3f89d806003915e86c4723bcbabc6b002f38457ce9",
+        "data/panels/highcov/VA.csv": "7e5cc2c8bf9e325699610281e3194d4d171ef995b73acb9c3636d11f0df4e329",
+        "data/panels/highcov/WI.csv": "ecfbbd5bd0ff098296cd16dc44f10173cf8b87afb8b364002c532b85ab5659eb",
+        "data/panels/highcov/WV.csv": "107d7fa07b97b27a6653053a17bbff38755e9fad394b6ebf27824052f90b03db",
+        "data/panels/highcov/WY.csv": "0ca7ed5347d9efe0abc648f742fb8b4cf4afa903b6183c0af137397f1f822048",
+        "data/state_daily/AL.csv": "b9d38c1a3d77a267366acdf05f12321192055f10bbe2ad8171111a69dae452ad",
+        "data/state_daily/AR.csv": "a980800bfa07126fed5a0dfda9dea5377affa3ecd0fe630bd9bacd4336e3ebc3",
+        "data/state_daily/AZ.csv": "2be215473f8c0bea4d061e2498c8f9685610df80bb4ab25c6f3bfbdeeed7bea7",
+        "data/state_daily/CA.csv": "53c527921eabdd7acd2a0715df1f66d16629f150ef1f2b9602b96264b92b33d5",
+        "data/state_daily/CO.csv": "d3d1f79d8e0f97c899e4ab2f973c676d461ab2345b61510afcbc80156207a315",
+        "data/state_daily/CT.csv": "b02c6ac1f24cf42618abf59d8276978dbb9483e1342af02bf8099cd499bc7def",
+        "data/state_daily/DE.csv": "2ad5d151873891ee29573593f21fe58c695dc2ba5ca50f0d94d10b68c0d5ca28",
+        "data/state_daily/FL.csv": "41d03ac90aeb402c929a14222d439a9a432ce665e8db9547e975a89acbeca974",
+        "data/state_daily/GA.csv": "f71c6d8f5baf7e289baec99057fd52bc6d605b0e617a571f1b0881a49b0614c5",
+        "data/state_daily/IA.csv": "0161ef38e2db1ef877834864b2dd2749eda26f0e43311a13f933aadfb484f4c8",
+        "data/state_daily/IL.csv": "6e8688b91e771ceb09240097aa6ea1c4fd4fba704636a3903522630a8f6c2c09",
+        "data/state_daily/IN.csv": "fece2dc880129015844b54274b1ee24e5e3d82512da878fc52892190498fee15",
+        "data/state_daily/KS.csv": "2b1146bbc8706e081b5c835b0ff7985facada0514ea30940003abec955c7f084",
+        "data/state_daily/KY.csv": "ac4f31ec693305ea322f036b69cc1b7d12cbcbd9ab8b1eff2ab077f9a1f9876e",
+        "data/state_daily/LA.csv": "c97313e472920b5c074dcc236458a1f26dd1340893a6c8df1df6d46c907a1688",
+        "data/state_daily/MA.csv": "e41f9d26c733315a0ee56b8e6b51a72852cd0ee8bc3638b3e9e441fe66cc5538",
+        "data/state_daily/MD.csv": "65452859b99eb065494813d1d1abaaea48076ca83fa14f3bc5466c8ee381d63d",
+        "data/state_daily/MI.csv": "df8faba1f02d9bbe34b74d8467e1118082fb115c7d9ba62c1161bd2e52d97fb6",
+        "data/state_daily/MN.csv": "7d50a49b073ae3b2322ada6313f6758339e6f01608974c2a91635e3462fe5c59",
+        "data/state_daily/MO.csv": "e904965989ece8ba360f988651d4985cc4f9c088790fef42b227016ee15a761d",
+        "data/state_daily/MS.csv": "8fd48a459e0ce3daa0e697c1f659a3280eff71593f0659146c2784aedc8c3883",
+        "data/state_daily/MT.csv": "0a8733a3860fcc61f2840234448d4f056bf6534fa08e1f2931d52648db6dc475",
+        "data/state_daily/NC.csv": "6e73e0043c4746ae0470d6c6d6d16f758c33fc71523a1f3ce73f4a185b22ee5d",
+        "data/state_daily/ND.csv": "1a8ece1e5ce061fba04085865c251acb67013a010112b5f5113a24d4afa6b875",
+        "data/state_daily/NE.csv": "3c32fd90fed9633e39453b40f83b57c6a9cd06032c7129a7710b73a09ac29039",
+        "data/state_daily/NH.csv": "d87b4cb2c53bf3c1d1fc69448f110387a304fdb7f40a41e018cf1eeb1bf2a17b",
+        "data/state_daily/NJ.csv": "39bf2a48e6ee944129b562c58287cecb7019e097a7d387b994473650a65868e4",
+        "data/state_daily/NM.csv": "47c88e31d78a99223398a750dd8655622a7d60954ffe1bc95b355005b5581068",
+        "data/state_daily/NV.csv": "0c2234e7fc6b131942cc25373670d2c0282d0ec87eaddd0c59a155dbb009f939",
+        "data/state_daily/NY.csv": "b6990352fc1672b97ba5239b7ebec246ec3165ed3d2e273ad84625ac1236468a",
+        "data/state_daily/OH.csv": "f3bff8733b72cd45e3db4a8c158a658005c79c6fd495836ee9056dfda5546161",
+        "data/state_daily/OK.csv": "35b8687e8093d3f76d32e112ca39999f4d015630da42bc9af23cc735e5e9f376",
+        "data/state_daily/OR.csv": "4dec111adbba397f1e8b05481de646ffce3e98d4ad9facdfeef872623c7a0473",
+        "data/state_daily/PA.csv": "0f4063f8621fc84824083e294d74e649bdbbc68dd66e2d99d0d54ec90fd45ac5",
+        "data/state_daily/RI.csv": "7f13f3d3b7b035fad7da3b8c4d99b66e5e14544a89a9c66ce1f448ed0db05d98",
+        "data/state_daily/SC.csv": "35e8b9db75c9559d1fd19b9d6dfde0e11ca0b85e0dea0c12ee8b85c88f1de034",
+        "data/state_daily/SD.csv": "2da782961a92224a76c2a6faf9a8dca6125d63d84aeb112eacf4cbaa6f80e81c",
+        "data/state_daily/TN.csv": "61a0da802b83b2fdec182dd462d2f3de02fce4d06e3301a1f55ea48482f9e0bd",
+        "data/state_daily/TX.csv": "95b299cf656a7160152371be265effd343bfbcaab9ed4089318be5c6fe8bf465",
+        "data/state_daily/UT.csv": "c8c6825699fbf6016a12c2283a6a5ebf529dcce190edb491578f2b216ecb32ea",
+        "data/state_daily/VA.csv": "dc02c993fd7b2de101c2bab63a4d76be2dcff0b1731b5ce3e7af1f837ffdee92",
+        "data/state_daily/WA.csv": "5dcf9dbf326aed6dde6fae25e51a2a3648ee99da13569db0876d83e26fa7ed23",
+        "data/state_daily/WI.csv": "650c16a3d2cb588dbf3c643ff2953373d4914f4b413fe1c99ce3237520b86461",
+        "data/state_daily/WV.csv": "59038381629e29a1b0ba1e04edf6d85c91830b13b3f82906d7f9c264e3b8fa83",
+        "data/state_daily/WY.csv": "cd9f160bbf62d0e48a406b9bbbe5d6d7b02814aee398facd8b19df5c07fe5aed"
+      }
+    },
+    {
+      "source": "NOAA Climate Prediction Center, population-weighted state heating and cooling degree days",
+      "url": "https://ftp.cpc.ncep.noaa.gov/htdocs/degree_days/weighted/daily_data/",
+      "redistributed": true,
+      "scripts": [
+        "get_external.py"
+      ],
+      "derived_files": {
+        "data/external/cpc_degree_days.csv": "52fc9ae445df9ad2cc69a583c01e61fc5a9a261285a280266535ff1662b0a54a"
+      }
+    },
+    {
+      "source": "NOAA Global Ensemble Forecast System v12, 12 UTC runs, 0.5-degree ensemble mean (geavg) and spread (gespr), NOAA Open Data Dissemination",
+      "url": "https://noaa-gefs-pds.s3.amazonaws.com",
+      "redistributed": false,
+      "scripts": [
+        "gefs_degree_days.py",
+        "gefs_calibration.py",
+        "gefs_spread.py",
+        "gefs_availability.py"
+      ],
+      "derived_files": {
+        "data/weather/gefs_archive_audit.csv": "d3f7ffb8c64930c1abd4cba59bc486adf62b464908b75dac7a340c72a0a0f14e",
+        "data/weather/gefs_calibration_coefficients.csv": "ec6f132d7e7b81f061fb996d1440b5c6a48e73a6e0763736ba02d2bb02c2a7ae",
+        "data/weather/gefs_dd_calibrated.csv": "5ed2f7c76cc3f14fcacd52f9b13e8612a7f4a59fd682c892c1981b418872f075",
+        "data/weather/gefs_dd_raw_by_issue.csv.gz": "04371a51d30a566313259ca64703ba70e1bb5dfdb8a84c5112e9f15dc1a1fa39",
+        "data/weather/gefs_skill.csv": "0717235f5f6dcc612bc7d8de255b4add8f75cb0b8251956d68549171d650ee9d",
+        "data/weather/gefs_spread.csv.gz": "53da6bc730c6474446d4aafb41b8e3e46dc31db330a88642eb7ccef6b501737b",
+        "data/weather/gefs_summary.json": "5e8656e706e1466cf4d9f890cefd01ec62c14618c91d6cd8c01fec7f1411ec95"
+      }
+    },
+    {
+      "source": "U.S. Census Bureau, 2020 county centers of population",
+      "url": "https://www2.census.gov/geo/docs/reference/cenpop2020/county/CenPop2020_Mean_CO.txt",
+      "redistributed": true,
+      "scripts": [
+        "gefs_degree_days.py"
+      ],
+      "derived_files": {
+        "data/weather/cenpop.txt": "4f754a3bda9714e5820d73bfac44ef1dab2b8c371f6c136305474cda7a752014"
+      },
+      "note": "data/weather/cenpop.txt is this file unchanged"
+    },
+    {
+      "source": "U.S. EIA Form EIA-930, hourly electric grid monitor (six-month balance files)",
+      "url": "https://www.eia.gov/electricity/gridmonitor/sixMonthFiles/",
+      "redistributed": false,
+      "scripts": [
+        "get_eia930.py",
+        "external_validation.py"
+      ],
+      "derived_files": {
+        "data/derived/eia930_daily_validation.csv": "4c87361e017b961b0dfc2faa747cc10c8fd91c46666f6ec8b378fff32a7817fe",
+        "data/external/eia930_daily.csv": "7694066a58cb75da71d043b731fb47fd3f7b4164bd656b914370db232f3cfb7e"
+      }
+    },
+    {
+      "source": "U.S. EIA Hourly Electric Grid Monitor, daily CO2 emissions estimates by balancing authority",
+      "url": "https://www.eia.gov/electricity/gridmonitor/knownissues/xls/",
+      "redistributed": false,
+      "scripts": [
+        "get_raw_inputs.py",
+        "parse_gridmonitor.py"
+      ],
+      "derived_files": {
+        "data/external/gridmonitor_ba_daily.csv": "8fc38299d57cde6cf46313464d575336602afb4e11ae321c27c13968b10b7553"
+      }
+    },
+    {
+      "source": "U.S. EIA Form EIA-860, Schedule 2 (Plant), 2019-2025",
+      "url": "https://www.eia.gov/electricity/data/eia860/",
+      "redistributed": false,
+      "scripts": [
+        "get_raw_inputs.py",
+        "ba_crosswalk.py"
+      ],
+      "derived_files": {
+        "data/derived/boundary_summary.csv": "c7fd35b5a809b3c7996d90cc4cda1b9bcae3635c1f00a9d259104a5bac5bf1b5",
+        "data/derived/facility_ba_crosswalk.csv": "6d1ca07cf14b89e80063de9fbc519f1b88ba35038200fa0690902940c26df0a1"
+      }
+    },
+    {
+      "source": "U.S. EIA state electricity data: net generation by state (EIA-923) and emissions by state",
+      "url": "https://www.eia.gov/electricity/data/state/",
+      "redistributed": false,
+      "scripts": [
+        "get_external.py",
+        "external_validation.py",
+        "physical_decomposition.py"
+      ],
+      "derived_files": {
+        "data/derived/eia_comparison_2024.csv": "e2a8c468de71d46abe54917979af97a30d5c1155abf96b0c4f75e47abe9c61bd",
+        "data/derived/eia_multiyear.csv": "b1e74986ba685791ed75c03f8c6df35c0aa8d8d053973efd088aba038478fcd8",
+        "data/derived/eia_multiyear_by_state.csv": "f56ba42c04e4d7b1ab0137756b3c908b0f3d3aef4896a96a37cc6f9fac4a3699",
+        "data/derived/generation_mix_shares.csv": "ed8401ff1eda3da1c8e84bc53b32d7173efafd2b2a40d37e325ae689f27f0a22",
+        "data/derived/monthly_generation_mix.csv": "c1f71c2b1764e04c69b050422175a0dae3ef66f2489f4545f065cb88b064808a"
+      }
+    },
+    {
+      "source": "U.S. EIA State Energy Data System, 2024 electric-power-sector CO2 emissions by state (total and coal)",
+      "url": "https://www.eia.gov/state/seds/",
+      "redistributed": true,
+      "scripts": [
+        "facility_validation.py",
+        "analysis_benchmark.py"
+      ],
+      "derived_files": {
+        "data/external/eia_seds_2024_electric_power_co2.csv": "ab8674e6267bcaf41c3de5b29354473bdf23c6d3d04e1f27e7164538b81a0d72"
+      },
+      "note": "small reference table entered from the source; not downloaded by the scripts"
+    },
+    {
+      "source": "U.S. EIA Henry Hub natural gas spot price (series RNGWHHD), annual mean of monthly prices",
+      "url": "https://www.eia.gov/dnav/ng/hist/rngwhhdM.htm",
+      "redistributed": true,
+      "scripts": [
+        "fig_interannual.py"
+      ],
+      "derived_files": {
+        "data/external/henry_hub_annual.csv": "a61a4598f72f3b23301588ab931a5b136356ff9765f1f282987f99adf7b2a98c"
+      },
+      "note": "small reference table entered from the source; not downloaded by the scripts"
+    }
+  ]
+}

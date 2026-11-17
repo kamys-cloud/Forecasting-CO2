@@ -1,0 +1,30 @@
+{
+  "package_hashes_checked": 386,
+  "forecast_files_checked": 33,
+  "forecast_rows_checked": 10755539,
+  "headline_metrics_checked": 105,
+  "independent_checks": {
+    "verify_benchmark.py": {
+      "returncode": 0,
+      "summary": "checked 165 numbers; mismatches: 0"
+    },
+    "verify_operational.py": {
+      "returncode": 0,
+      "summary": "Operational verification: 90/90 recomputed values match"
+    },
+    "verify_scheduling.py": {
+      "returncode": 0,
+      "summary": "Scheduling verification: 16/16 capture shares agree within 1 percentage point"
+    }
+  },
+  "environment": {
+    "python": "3.13.17",
+    "platform": "Linux-6.18.44-fc-v185-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "pandas": "3.0.5",
+    "sklearn": "1.9.1",
+    "scipy": "1.18.1",
+    "statsmodels": "0.15.0",
+    "matplotlib": "3.11.2"
+  }
+}

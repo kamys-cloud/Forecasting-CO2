@@ -1,0 +1,7 @@
+3/12 TX h1 ridge, GAM, HGB (benchmark): predictions and selected settings match the supplied forecasts (max abs difference 0)
+6/12 TX h14 ridge, GAM, HGB (benchmark): predictions and selected settings match the supplied forecasts (max abs difference 0)
+9/12 TX h14 ridge, GAM, HGB without annual encodings: predictions and selected settings match the supplied forecasts (max abs difference 0)
+10/12 TX h14 Fourier ridge: predictions and selected settings match the supplied forecasts (max abs difference 0)
+11/12 TX h7 operational ridge, lagged inputs: predictions and selected settings match the supplied forecasts (max abs difference 0)
+12/12 TX h7 operational Fourier ridge with GEFS: predictions and selected settings match the supplied forecasts (max abs difference 2.33e-10)
+PASS: 12 refitted configurations reproduce the supplied forecasts.

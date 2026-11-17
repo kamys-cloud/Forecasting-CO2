@@ -1,0 +1,5 @@
+# Additional packages needed only to refit the Prophet baseline and to decode GEFS GRIB2 files when rebuilding the inputs.
+-r requirements.txt
+prophet==1.5.0
+cmdstanpy==1.3.0
+eccodes==2.50.0

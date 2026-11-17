@@ -1,0 +1,7 @@
+Package hashes verified: 386 files
+Forecast files verified: 33 (keys, calendar horizons, finite values, targets)
+Headline metrics reconstructed: 105 model-horizon means agree with results/factorial/factorial_mean_r2.csv
+verify_benchmark.py: checked 165 numbers; mismatches: 0
+verify_operational.py: Operational verification: 90/90 recomputed values match
+verify_scheduling.py: Scheduling verification: 16/16 capture shares agree within 1 percentage point
+PASS: all supplied files, forecasts and headline metrics verified; summaries written to reproduced_summaries/.

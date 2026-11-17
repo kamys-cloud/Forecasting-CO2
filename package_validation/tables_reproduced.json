@@ -1,0 +1,22 @@
+{
+  "steps": 24,
+  "result_files_compared": 60,
+  "matching": 60,
+  "not_matching": [],
+  "attribution_rebuilt": true,
+  "figures_regenerated": 16,
+  "tolerance": {
+    "rtol": 1e-06,
+    "atol": 1e-09
+  },
+  "environment": {
+    "python": "3.13.17",
+    "platform": "Linux-6.18.44-fc-v185-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "pandas": "3.0.5",
+    "sklearn": "1.9.1",
+    "scipy": "1.18.1",
+    "statsmodels": "0.15.0",
+    "matplotlib": "3.11.2"
+  }
+}

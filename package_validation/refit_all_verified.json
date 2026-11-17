@@ -1,0 +1,20 @@
+{
+  "study": "all",
+  "files_compared": 7760,
+  "all_predictions_match_reference": true,
+  "max_prediction_error": 6.693881005048752e-09,
+  "tolerance": {
+    "rtol": 1e-10,
+    "atol": 1e-07
+  },
+  "environment": {
+    "python": "3.13.17",
+    "platform": "Linux-6.18.44-fc-v185-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "pandas": "3.0.5",
+    "sklearn": "1.9.1",
+    "scipy": "1.18.1",
+    "statsmodels": "0.15.0",
+    "matplotlib": "3.11.2"
+  }
+}

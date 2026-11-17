@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software or data, please cite the accompanying article and this archive."
+title: "co2-horizon-benchmark: code and data for forecast horizon and seasonal representation in power-sector CO2 forecasting"
+version: 1.0.0
+date-released: 2026-10-30
+license: MIT
+authors:
+  - family-names: Moulay
+    given-names: Ikram
+    affiliation: "King Fahd University of Petroleum & Minerals"
+  - family-names: Hammad
+    given-names: Omar J.
+    affiliation: "King Fahd University of Petroleum & Minerals"
+  - family-names: Merrouche
+    given-names: Sahar
+    affiliation: "King Fahd University of Petroleum & Minerals"
+  - family-names: Redah
+    given-names: Moussa
+    affiliation: "King Fahd University of Petroleum & Minerals"
+  - family-names: Alsunni
+    given-names: Yousef A.
+    affiliation: "King Fahd University of Petroleum & Minerals"

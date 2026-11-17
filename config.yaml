@@ -1,0 +1,220 @@
+release: "1.0.0"
+data:
+  source: "EPA Clean Air Markets Program Data (CAMPD), daily facility-level emissions, 2019-01-01 to 2025-12-31"
+  target: "co2_mass (short tons), sum over facilities by state and day; days without a reporting facility are absent, never zero"
+  states: ["AL", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA", "IA", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "WA", "WI", "WV", "WY"]
+  excluded_codes:
+    AK: "insufficient qualifying facility coverage"
+    DC: "insufficient qualifying facility coverage"
+    PR: "insufficient qualifying facility coverage"
+    ID: "completeness below 98%"
+    VT: "completeness below 98% and gap above 14 days"
+    ME: "mean daily CO2 below 5,000 short tons"
+  eligibility:
+    min_observed_share: 0.98
+    min_facilities: 5
+    min_mean_daily_co2_short_tons: 5000
+    min_cv: 0.05
+    max_consecutive_missing_days: 14
+    duplicates_removed: "state-facility-date duplicates at annual-export boundaries"
+  facility_panels:
+    balanced: "facilities reporting CO2 in all seven years"
+    highcov: "facilities reporting CO2 on >= 95% of days"
+    filled: "partial facility-days (load or heat input without CO2) and isolated one-day gaps filled at the facility's own emission factor"
+protocol:
+  horizons: [1, 2, 3, 5, 7, 10, 14]
+  first_origin: "2022-07-17"
+  last_target: "2025-12-31"
+  refit_every_days: 14
+  training: "all rows whose outcome date is on or before the refit date (outcome-availability restriction)"
+  validation_block: "last 15% (minimum 20) of eligible rows before the first origin; hyperparameters frozen afterwards"
+  selection_criterion: "validation R2"
+  threads_per_fit: 1
+  random_state: 42
+models:
+  ridge:
+    alpha_grid: [0.1, 0.3, 1, 3, 10, 30, 50, 100, 200, 300, 500, 1000]
+    scaling: "standardize"
+  gam:
+    basis: "cubic B-spline, 5 knots per standardized predictor, no intercept column"
+    ridge_alpha_grid: [0.1, 0.3, 1, 3, 10, 30, 50, 100, 200, 300, 500, 1000]
+  hgb:
+    grid:
+      - {"learning_rate": 0.03, "max_depth": 2, "max_iter": 100, "min_samples_leaf": 10}
+      - {"learning_rate": 0.03, "max_depth": 3, "max_iter": 150, "min_samples_leaf": 14}
+      - {"learning_rate": 0.03, "max_depth": 4, "max_iter": 150, "min_samples_leaf": 20}
+      - {"learning_rate": 0.06, "max_depth": 2, "max_iter": 80, "min_samples_leaf": 10}
+      - {"learning_rate": 0.06, "max_depth": 3, "max_iter": 120, "min_samples_leaf": 14}
+      - {"learning_rate": 0.06, "max_depth": 4, "max_iter": 120, "min_samples_leaf": 20}
+      - {"learning_rate": 0.06, "max_depth": 5, "max_iter": 100, "min_samples_leaf": 25}
+      - {"learning_rate": 0.1, "max_depth": 2, "max_iter": 80, "min_samples_leaf": 10}
+      - {"learning_rate": 0.1, "max_depth": 3, "max_iter": 100, "min_samples_leaf": 14}
+      - {"learning_rate": 0.1, "max_depth": 4, "max_iter": 80, "min_samples_leaf": 20}
+      - {"learning_rate": 0.15, "max_depth": 3, "max_iter": 80, "min_samples_leaf": 14}
+      - {"learning_rate": 0.15, "max_depth": 4, "max_iter": 60, "min_samples_leaf": 25}
+  hgb_expanded:
+    random_settings:
+      - {"learning_rate": 0.234447, "max_depth": 5, "max_iter": 154, "min_samples_leaf": 28}
+      - {"learning_rate": 0.212237, "max_depth": 6, "max_iter": 92, "min_samples_leaf": 10}
+      - {"learning_rate": 0.29293, "max_depth": 5, "max_iter": 237, "min_samples_leaf": 44}
+      - {"learning_rate": 0.047153, "max_depth": 5, "max_iter": 258, "min_samples_leaf": 29}
+      - {"learning_rate": 0.117531, "max_depth": 2, "max_iter": 280, "min_samples_leaf": 47}
+      - {"learning_rate": 0.248601, "max_depth": 5, "max_iter": 181, "min_samples_leaf": 29}
+      - {"learning_rate": 0.075899, "max_depth": 2, "max_iter": 184, "min_samples_leaf": 53}
+      - {"learning_rate": 0.250013, "max_depth": 2, "max_iter": 111, "min_samples_leaf": 39}
+      - {"learning_rate": 0.229845, "max_depth": 5, "max_iter": 132, "min_samples_leaf": 8}
+      - {"learning_rate": 0.269005, "max_depth": 6, "max_iter": 216, "min_samples_leaf": 47}
+      - {"learning_rate": 0.066445, "max_depth": 3, "max_iter": 161, "min_samples_leaf": 32}
+      - {"learning_rate": 0.054744, "max_depth": 2, "max_iter": 233, "min_samples_leaf": 42}
+      - {"learning_rate": 0.225981, "max_depth": 3, "max_iter": 291, "min_samples_leaf": 27}
+      - {"learning_rate": 0.117433, "max_depth": 3, "max_iter": 59, "min_samples_leaf": 30}
+      - {"learning_rate": 0.064947, "max_depth": 4, "max_iter": 73, "min_samples_leaf": 42}
+      - {"learning_rate": 0.075804, "max_depth": 4, "max_iter": 186, "min_samples_leaf": 41}
+      - {"learning_rate": 0.136774, "max_depth": 2, "max_iter": 256, "min_samples_leaf": 39}
+      - {"learning_rate": 0.100586, "max_depth": 5, "max_iter": 239, "min_samples_leaf": 50}
+      - {"learning_rate": 0.243382, "max_depth": 6, "max_iter": 140, "min_samples_leaf": 54}
+      - {"learning_rate": 0.207924, "max_depth": 3, "max_iter": 205, "min_samples_leaf": 12}
+      - {"learning_rate": 0.067973, "max_depth": 6, "max_iter": 41, "min_samples_leaf": 48}
+      - {"learning_rate": 0.202807, "max_depth": 5, "max_iter": 162, "min_samples_leaf": 43}
+      - {"learning_rate": 0.236411, "max_depth": 4, "max_iter": 159, "min_samples_leaf": 32}
+      - {"learning_rate": 0.050541, "max_depth": 4, "max_iter": 103, "min_samples_leaf": 11}
+      - {"learning_rate": 0.203837, "max_depth": 5, "max_iter": 162, "min_samples_leaf": 52}
+      - {"learning_rate": 0.23185, "max_depth": 4, "max_iter": 189, "min_samples_leaf": 39}
+      - {"learning_rate": 0.170538, "max_depth": 2, "max_iter": 185, "min_samples_leaf": 48}
+      - {"learning_rate": 0.018937, "max_depth": 3, "max_iter": 130, "min_samples_leaf": 29}
+      - {"learning_rate": 0.07223, "max_depth": 3, "max_iter": 146, "min_samples_leaf": 59}
+      - {"learning_rate": 0.077842, "max_depth": 6, "max_iter": 253, "min_samples_leaf": 8}
+      - {"learning_rate": 0.091601, "max_depth": 6, "max_iter": 116, "min_samples_leaf": 28}
+      - {"learning_rate": 0.171539, "max_depth": 5, "max_iter": 171, "min_samples_leaf": 48}
+      - {"learning_rate": 0.202651, "max_depth": 4, "max_iter": 145, "min_samples_leaf": 27}
+      - {"learning_rate": 0.058422, "max_depth": 6, "max_iter": 126, "min_samples_leaf": 6}
+      - {"learning_rate": 0.036114, "max_depth": 5, "max_iter": 227, "min_samples_leaf": 43}
+      - {"learning_rate": 0.056769, "max_depth": 4, "max_iter": 274, "min_samples_leaf": 32}
+      - {"learning_rate": 0.054171, "max_depth": 4, "max_iter": 221, "min_samples_leaf": 32}
+      - {"learning_rate": 0.120496, "max_depth": 4, "max_iter": 102, "min_samples_leaf": 21}
+      - {"learning_rate": 0.192782, "max_depth": 5, "max_iter": 134, "min_samples_leaf": 57}
+      - {"learning_rate": 0.044222, "max_depth": 2, "max_iter": 128, "min_samples_leaf": 57}
+      - {"learning_rate": 0.273488, "max_depth": 4, "max_iter": 221, "min_samples_leaf": 30}
+      - {"learning_rate": 0.291061, "max_depth": 3, "max_iter": 108, "min_samples_leaf": 47}
+      - {"learning_rate": 0.217898, "max_depth": 5, "max_iter": 156, "min_samples_leaf": 45}
+      - {"learning_rate": 0.037953, "max_depth": 3, "max_iter": 156, "min_samples_leaf": 54}
+      - {"learning_rate": 0.142175, "max_depth": 5, "max_iter": 92, "min_samples_leaf": 44}
+      - {"learning_rate": 0.177974, "max_depth": 3, "max_iter": 182, "min_samples_leaf": 14}
+      - {"learning_rate": 0.258418, "max_depth": 2, "max_iter": 237, "min_samples_leaf": 32}
+      - {"learning_rate": 0.135307, "max_depth": 5, "max_iter": 120, "min_samples_leaf": 39}
+      - {"learning_rate": 0.179388, "max_depth": 2, "max_iter": 208, "min_samples_leaf": 39}
+      - {"learning_rate": 0.130584, "max_depth": 2, "max_iter": 244, "min_samples_leaf": 7}
+      - {"learning_rate": 0.153257, "max_depth": 2, "max_iter": 125, "min_samples_leaf": 41}
+      - {"learning_rate": 0.039987, "max_depth": 2, "max_iter": 85, "min_samples_leaf": 37}
+      - {"learning_rate": 0.059472, "max_depth": 3, "max_iter": 280, "min_samples_leaf": 59}
+      - {"learning_rate": 0.110592, "max_depth": 4, "max_iter": 199, "min_samples_leaf": 37}
+      - {"learning_rate": 0.016613, "max_depth": 2, "max_iter": 289, "min_samples_leaf": 27}
+      - {"learning_rate": 0.236993, "max_depth": 4, "max_iter": 56, "min_samples_leaf": 9}
+      - {"learning_rate": 0.151131, "max_depth": 5, "max_iter": 167, "min_samples_leaf": 29}
+      - {"learning_rate": 0.175801, "max_depth": 6, "max_iter": 180, "min_samples_leaf": 31}
+      - {"learning_rate": 0.087423, "max_depth": 6, "max_iter": 126, "min_samples_leaf": 34}
+      - {"learning_rate": 0.137284, "max_depth": 4, "max_iter": 113, "min_samples_leaf": 6}
+    seed: 42
+seasonal_representations:
+  orig: "sin/cos(2*pi*doy/365.25), sin/cos(2*pi*month/12), numeric year, weekday, weekend (within the 27 inputs)"
+  fw: "sin/cos(2*pi*k*weekday/7), k = 2, 3"
+  fa: "sin/cos(2*pi*k*doy/365.25), k = 2..K, K in 1..6 tuned"
+  cs: "periodic cubic B-spline in doy, n knots in {0,4,6,8,10,12} tuned"
+  faw: "fa + fw"
+  clim: "expected HDD/CDD of target day of year (2019 to first origin, 15-day smoothing) + observed HDD/CDD on origin day"
+  oracle: "observed HDD/CDD on target day (upper bound; not available in advance)"
+classical:
+  snaive7: "y(t+h-7*ceil(h/7))"
+  snaive364: "y(t+h-364)"
+  fets: "annual Fourier regression K=3 + ETS(A,Ad,A) weekly on remainder; re-estimated every 14 days; daily state update"
+  sarimax: "SARIMA(2,0,1)(1,0,1)_7 errors + constant + annual Fourier K=3; re-estimated every 112 days; daily state update"
+  prophet: "yearly 10 / weekly 3 Fourier pairs, US holidays, re-estimated every 14 days"
+inference:
+  bootstrap: "joint moving-block over forecast dates shared by all states"
+  block_days: 28
+  replicates: 2000
+  seed: 42
+  year_block: "exact enumeration of the 4^4 resamples of evaluation years 2022-2025"
+  equivalence_margin_r2: 0.01
+  equivalence_interval: 0.9
+  superiority_interval: 0.95
+  dm_test: "Harvey-Leybourne-Newbold corrected, Holm adjustment within each 315-test family"
+decision_analyses:
+  exceedance_threshold: "state 90th percentile of daily (or 7/14-day total) emissions before 2022-07-17"
+  cost_loss_ratio: "base rate"
+  cumulative_windows: [7, 14]
+physical:
+  emission_factor_classes_short_tons_per_mmbtu:
+    coal_like: ">= 0.090"
+    gas_like: "< 0.066"
+    other: "between"
+operational:
+  information_set: "all 27 inputs lagged one day: data finalized through t-1 for a forecast issued at the end of day t"
+  variants:
+    ops: "lagged inputs"
+    ops_f: "+ annual and weekly Fourier terms (annual K from the benchmark selection; h 4 and 6 use h 5 and 7)"
+    ops_fc: "+ degree-day climatology of the target day of year + observed degree days of t-1"
+    ops_fw: "+ calibrated GEFS degree-day forecast for the target day + observed degree days of t-1 (perfect-prognosis training on observed degree days)"
+    ops_fo: "+ observed target-day degree days (oracle)"
+  horizons:
+    ops: [1, 2, 3, 5, 7, 10, 14]
+    ops_f: [1, 2, 3, 5, 7, 10, 14]
+    ops_fw: [1, 2, 3, 5, 7, 10, 14]
+    ops_fc: [1, 7, 14]
+    ops_fo: [1, 7, 14]
+  tuning: "model hyperparameters re-selected per variant on the pre-origin validation block"
+gefs:
+  product: "NOAA GEFS v12 ensemble mean (geavg), 0.5 degree, AWS noaa-gefs-pds"
+  run: "12 UTC of issue day t"
+  target_day: "06 UTC to 06 UTC"
+  temperature: "Tmax/Tmin = extremes of four 6-h TMAX/TMIN 2-m fields"
+  degree_days: "base 65 F at 2020 Census county centres of population, population-weighted to states"
+  calibration: "linear, per state, lead and quantity, against CPC on target dates 2021-07-17 to 2022-07-16"
+  leads_days: [1, 2, 3, 4, 5, 6, 7, 10, 14]
+scheduling:
+  balancing_authorities: ["ERCO", "CISO", "NYIS", "ISNE"]
+  facility_crosswalk: "CAMPD Facility ID = EIA plant code; balancing-authority code from EIA-860 Schedule 2 of the same year (nearest year otherwise)"
+  intensity:
+    crosswalk: "CAMPD CO2 of facilities assigned to the BA / EIA-930 net generation (primary)"
+    proxy: "CAMPD CO2 of TX, CA, NY and CT+MA+NH+RI / EIA-930 net generation (boundary comparison)"
+    eia: "EIA Hourly Electric Grid Monitor CO2 of generated electricity / EIA-930 net generation (independent comparison)"
+  generation_cleaning: "net generation <= 0 or < 60% of the 29-day rolling median set missing"
+  weather_states: {"ERCO": ["TX"], "CISO": ["CA"], "NYIS": ["NY"], "ISNE": ["CT", "MA", "NH", "RI", "ME", "VT"]}
+  weather_weighting: "2020 Census population"
+  rule: "place a one-day block on argmin forecast intensity over t+1..t+7"
+  metric: "sum(saving) / sum(perfect-foresight saving); saving relative to the mean of the seven candidate days"
+  bootstrap: {"block_days": 28, "replicates": 2000, "seed": 42}
+  forecasts: "direct intensity models (ridge, GAM, HGB) x {orig, four (K tuned for ridge, reused for GAM/HGB), four_gefs}"
+  baselines: ["next day", "same weekday last week (two weeks for t+7)"]
+  marginal_emission_factors: "OLS of day-to-day changes in facility-mapped CO2 on changes in EIA-930 demand within 12 season x net-load-tercile bins, weekday effects; 500 block-bootstrap replicates (28 days)"
+process:
+  description: "water electrolyser supplying hydrogen to a downstream process through storage"
+  power_mw: 20
+  energy_per_operating_day_mwh: 480
+  specific_consumption_kwh_per_kg_h2: 55
+  operating_days_per_week: 4
+  minimum_campaign_days: 2
+  maximum_campaigns_per_week: 2
+  startup_energy_mwh: 20
+  startup_cost_usd: 3000
+  electricity_contract: "fixed price"
+  planning: "weekly, non-overlapping weeks from 2022-07-17; pattern with lowest forecast emissions; reference = days 1-4"
+inference_sensitivity:
+  confirmatory_family: "Fourier ridge vs GAM, HGB, Fourier GAM, Fourier HGB, SARIMAX, Prophet x 7 horizons (42 one-sided tests)"
+  non_inferiority: "intersection-union test, unadjusted alpha 0.05"
+  superiority: "Holm across the 42 tests"
+  margins_r2: [0.005, 0.01, 0.02]
+  block_days: [28, 56, 91, 182]
+  wild_cluster: "Rademacher sign flips over 4 Census regions (16 assignments, null imposed)"
+warnings:
+  event: "daily state CO2 above the state 90th percentile of 2019-01-01 to 2022-07-16"
+  calibration_origins: ["2022-07-17", "2023-07-16"]
+  evaluation_origins: ["2023-07-17", "2025-12-31"]
+  cost_loss_ratios: [0.05, 0.1, 0.2, 0.3, 0.5]
+attribution:
+  reconstruction: "E = sum_i H_i(t) EF_i with EF_i constant over 2019-2025 (and year-specific as a check)"
+  conditional: "OLS of log E(t) - log mean(E, t-365..t-1) on weekday, annual Fourier (3), HDD/CDD (linear, quadratic), controls; fit to 2022-07-16, evaluate after"
+operational_audit:
+  gefs_archive: "noaa-gefs-pds gefs.YYYYMMDD/12/atmos/pgrb2ap5/{geavg,gespr}.t12z.pgrb2a.0p50.fHHH; S3 Last-Modified recorded per issue day"
+  variants: {"pp_r": "perfect prognosis, origins from 2021-07-10", "ft_r": "forecast-trained, origins from 2021-07-10", "ft_rs": "ft_r + 2-m temperature spread", "pp_l2": "perfect prognosis with observed degree days of t-2"}
+  rolling_recalibration: "monthly, 365 verified target dates before the issue month"

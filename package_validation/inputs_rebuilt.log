@@ -1,0 +1,39 @@
+=== python3 get_external.py ../data/external
+rc=0 11s
+cpc rows 122736
+=== python3 get_eia930.py ../data/external
+rc=0 41s
+2025 Jul_Dec 2760
+saved (38355, 12)
+=== python3 get_raw_inputs.py ../data/raw
+rc=0 18s
+done
+=== python3 parse_gridmonitor.py ../data/raw/gridmonitor ../data/external/gridmonitor_ba_daily.csv
+rc=0 5s
+NYIS    2557
+dtype: int64
+=== python3 facility_validation.py
+rc=0 101s
+ "reporting_cv_median": 0.23279503806954033
+}
+=== python3 external_validation.py
+rc=1 11s
+FileNotFoundError: [Errno 2] No such file or directory: 'rebuild/data/derived/generation_mix_shares.csv'
+FileNotFoundError: [Errno 2] No such file or directory: 'rebuild/data/derived/generation_mix_shares.csv'
+=== python3 physical_decomposition.py
+rc=0 12s
+ratio_campd_load_eia_fossil          0.980   0.998   0.707   1.080
+months                              84.000  84.000  84.000  84.000
+=== python3 ba_crosswalk.py $CAMPD_DIR ../data/raw/eia860 ../data/derived
+rc=0 22s
+23  NYIS  all  2.042727e+08   2.286127e+08                0.000388                        0.106815                                                             none:0.0004            NJ:0.1068           86               86
+31  ISNE  all  1.643226e+08   1.788870e+08                0.000000                        0.081417                                                             none:0.0000  ME:0.0665;VT:0.0149           72               79
+RAWDONE
+=== external_validation.py rerun after ordering fix: rc=0
+=== dd
+=== spread
+=== availability
+geavg_f354_last_modified missing 0 hours after init: median 6.3 p95 6.39 max 22.8 share<=12h 0.9988
+gespr_f024_last_modified missing 0 hours after init: median 3.94 p95 3.96 max 7.9 share<=12h 1.0
+gespr_f354_last_modified missing 0 hours after init: median 6.3 p95 6.38 max 22.8 share<=12h 0.9988
+GEFSDONE
