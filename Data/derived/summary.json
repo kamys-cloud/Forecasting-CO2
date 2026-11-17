@@ -1,0 +1,142 @@
+{
+ "audit": {
+  "records": 3341736,
+  "no_activity": 1336686,
+  "partial": 144057,
+  "isolated_gaps": 42858,
+  "share_partial_records": 0.04310843226394904,
+  "imputable_share_total": 0.003762999226465208,
+  "imputable_share_max_state": [
+   "SD",
+   0.019536641138081547
+  ],
+  "imputable_share_median": 0.0033985369787059632,
+  "max_daily_relative_change_median_state": 0.05350159059612043,
+  "corr_orig_filled_min": 0.993923446546085
+ },
+ "eia_multiyear": {
+  "years": [
+   2019,
+   2024
+  ],
+  "n_state_years": 270,
+  "median_abs_pct_diff_total": 4.989713267225987,
+  "median_abs_pct_diff_util_ipp": 3.2326998313466415,
+  "share_within_10pct_total": 0.6851851851851852,
+  "share_within_10pct_util_ipp": 0.8629629629629629,
+  "corr_levels_log": 0.9934082448458066,
+  "corr_yoy_changes_pooled": 0.9702387846098657,
+  "median_state_corr_changes": 0.9926865900529303,
+  "ratio_sd_within_state_median": 0.01615985003776584,
+  "aggregate_ratio_by_year": {
+   "2019": 0.9416254747759886,
+   "2020": 0.9362429369152602,
+   "2021": 0.9422711302997122,
+   "2022": 0.936369504397065,
+   "2023": 0.9357170133191073,
+   "2024": 0.9342675818904791
+  },
+  "discrepant": {
+   "LA": {
+    "ratio_total": 0.8064575765080632,
+    "ratio_util_ipp": 1.2584282594199458,
+    "corr_changes": 0.9955656955159838
+   },
+   "NH": {
+    "ratio_total": 1.3723924964402052,
+    "ratio_util_ipp": 1.4166458035503806,
+    "corr_changes": 0.9796096016897554
+   },
+   "OR": {
+    "ratio_total": 0.8755720138659105,
+    "ratio_util_ipp": 0.9141211204459209,
+    "corr_changes": 0.9827396158323585
+   },
+   "MI": {
+    "ratio_total": 0.8362096685107893,
+    "ratio_util_ipp": 0.8933777645097916,
+    "corr_changes": 0.724281526703723
+   },
+   "MT": {
+    "ratio_total": 0.8678396625945587,
+    "ratio_util_ipp": 0.8782675984437193,
+    "corr_changes": 0.9991198957789093
+   }
+  }
+ },
+ "monthly": {
+  "median_corr_levels": 0.9953466778985458,
+  "min_corr_levels": [
+   "NH",
+   0.9762486567858736
+  ],
+  "median_corr_changes": 0.9953700793500752,
+  "min_corr_changes": [
+   "NH",
+   0.9773540447055244
+  ],
+  "discrepant": {
+   "LA": 0.9779709281753316,
+   "NH": 0.9773540447055244,
+   "OR": 0.9920528740287784,
+   "MI": 0.979784367494182,
+   "MT": 0.9970089319907404
+  }
+ },
+ "daily": {
+  "ERCO": {
+   "states": "TX",
+   "days": 2556,
+   "corr_levels": 0.9914375402699459,
+   "corr_daily_changes": 0.9668411401590258,
+   "corr_within_month_anomalies": 0.9830467328664888,
+   "corr_co2_demand": 0.7497649589269396,
+   "ratio": 1.3023922395779133
+  },
+  "CISO": {
+   "states": "CA",
+   "days": 2556,
+   "corr_levels": 0.95773115994207,
+   "corr_daily_changes": 0.9686208482807722,
+   "corr_within_month_anomalies": 0.9825334408838436,
+   "corr_co2_demand": 0.7398802837876336,
+   "ratio": 0.9423201942109454
+  },
+  "NYIS": {
+   "states": "NY",
+   "days": 2557,
+   "corr_levels": 0.9918909680941298,
+   "corr_daily_changes": 0.9771613099341783,
+   "corr_within_month_anomalies": 0.9875219218388942,
+   "corr_co2_demand": 0.8950708214835026,
+   "ratio": 0.9334699222740231
+  },
+  "ISNE": {
+   "states": "CT+MA+NH+RI+ME+VT",
+   "days": 2557,
+   "corr_levels": 0.9927154328577873,
+   "corr_daily_changes": 0.9930663239264169,
+   "corr_within_month_anomalies": 0.9940940112876191,
+   "corr_co2_demand": 0.8175708561799228,
+   "ratio": 0.9112896712892291
+  },
+  "FPL": {
+   "states": "FL",
+   "days": 2535,
+   "corr_levels": 0.8862424233003542,
+   "corr_daily_changes": 0.8637512212803353,
+   "corr_within_month_anomalies": 0.8884448633615175,
+   "corr_co2_demand": 0.8730805683935454,
+   "ratio": 2.2311877416662607
+  },
+  "PNM": {
+   "states": "NM",
+   "days": 2555,
+   "corr_levels": 0.7090395288944327,
+   "corr_daily_changes": 0.49555943885917764,
+   "corr_within_month_anomalies": 0.4894370488965458,
+   "corr_co2_demand": 0.32006800348560493,
+   "ratio": 2.7779465674728314
+  }
+ }
+}
