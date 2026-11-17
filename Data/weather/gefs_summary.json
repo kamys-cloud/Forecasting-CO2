@@ -1,0 +1,81 @@
+{
+ "missing_issue_days": 0,
+ "skill": [
+  {
+   "h": 1,
+   "median_r": 0.9777533545380136,
+   "median_rmse": 2.4890438444315857,
+   "median_rmse_clim": 6.728947352377483,
+   "median_skill": 0.8748246687719621,
+   "n_states": 48
+  },
+  {
+   "h": 2,
+   "median_r": 0.9760300027134208,
+   "median_rmse": 2.546551288898983,
+   "median_rmse_clim": 6.7314788859923125,
+   "median_skill": 0.8694039133380882,
+   "n_states": 48
+  },
+  {
+   "h": 3,
+   "median_r": 0.9736102445017902,
+   "median_rmse": 2.683146673427453,
+   "median_rmse_clim": 6.734117877749856,
+   "median_skill": 0.8527926272587614,
+   "n_states": 48
+  },
+  {
+   "h": 4,
+   "median_r": 0.96985877947694,
+   "median_rmse": 2.9204832698452408,
+   "median_rmse_clim": 6.736599175599246,
+   "median_skill": 0.8274314296092723,
+   "n_states": 48
+  },
+  {
+   "h": 5,
+   "median_r": 0.9632350725396194,
+   "median_rmse": 3.21893594865809,
+   "median_rmse_clim": 6.739060689784233,
+   "median_skill": 0.7927446500357413,
+   "n_states": 48
+  },
+  {
+   "h": 6,
+   "median_r": 0.9544921882267354,
+   "median_rmse": 3.5890942663563776,
+   "median_rmse_clim": 6.741516863997092,
+   "median_skill": 0.7452072823994053,
+   "n_states": 48
+  },
+  {
+   "h": 7,
+   "median_r": 0.9434523859326039,
+   "median_rmse": 4.014601306236054,
+   "median_rmse_clim": 6.741520764873365,
+   "median_skill": 0.6930019297438497,
+   "n_states": 48
+  },
+  {
+   "h": 10,
+   "median_r": 0.9098392710716805,
+   "median_rmse": 4.894922670877798,
+   "median_rmse_clim": 6.746441212737025,
+   "median_skill": 0.5025355470062554,
+   "n_states": 48
+  },
+  {
+   "h": 14,
+   "median_r": 0.8731327401922271,
+   "median_rmse": 5.533926581369528,
+   "median_rmse_clim": 6.756071815614033,
+   "median_skill": 0.31274358197885005,
+   "n_states": 48
+  }
+ ],
+ "calibration_window": [
+  "2021-07-17",
+  "2022-07-16"
+ ]
+}
